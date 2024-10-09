@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_perguntas/resultado.dart';
 import './questao.dart';
 import './resposta.dart';
 
@@ -13,44 +14,50 @@ class _PerguntaAppState extends State<PerguntaApp> {
   var _perguntaSelecionada = 0;
 
   void _responder() {
+    if(temPerguntaSelecionada) {
     setState(() {
       _perguntaSelecionada++;
     });
+    }
+  }
+
+  final List<Map<String, Object>> _perguntas = [
+    {
+      'texto': 'Qual é a sua cor favorita?',
+      'respostas': ['Preto', 'Vermelho', 'Verde', 'Branco']
+    },
+    {
+      'texto': 'Qual é o seu animal favorito?',
+      'respostas': ['Coelho', 'Cobra', 'Elefante', 'Leão']
+    },
+    {
+      'texto': 'Qual seu instrutor favorito?',
+      'respostas': ['Maria', 'João', 'Leo', 'Pedro']
+    }
+  ];
+
+  bool get temPerguntaSelecionada {
+    return _perguntaSelecionada < _perguntas.length;
   }
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, Object>> perguntas = [
-      {
-        'texto': 'Qual é a sua cor favorita?',
-        'respostas': ['Preto', 'Vermelho', 'Verde', 'Branco']
-      },
-      {
-        'texto': 'Qual é o seu animal favorito?',
-        'respostas': ['Coelho', 'Cobra', 'Elefante', 'Leão']
-      },
-      {
-        'texto': 'Qual seu instrutor favorito?',
-        'respostas': ['Maria', 'João', 'Leo', 'Pedro']
-      }
-    ];
-
-    List<Widget> respostas = [];
-    for (var textResp in perguntas[_perguntaSelecionada].cast()['respostas']) {
-      respostas.add(Resposta(textResp, _responder));
-    }
+    List<String> respostas = temPerguntaSelecionada
+        ? _perguntas[_perguntaSelecionada].cast()['respostas']
+        : [];
 
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Perguntas'),
+          title: const Text('Perguntas'),
         ),
-        body: Column(
+        body: temPerguntaSelecionada ? Column(
           children: [
-            Questao(perguntas[_perguntaSelecionada]['texto'].toString()),
-            ...respostas //Os ... mostram todos os elementos da lista
+            Questao(_perguntas[_perguntaSelecionada]['texto'].toString()),
+            //Os ... mostram todos os elementos da lista
+            ...respostas.map((t) => Resposta(t, _responder)),
           ],
-        ),
+        ) : const Resultado()
       ),
     );
   }
