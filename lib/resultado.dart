@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
 class Resultado extends StatelessWidget {
+  //Componente para mostrar o resultado ao final das perguntas
+
   final int pontuacao;
 
   final void Function() quandoReiniciarQuestionario;
 
   Resultado(this.pontuacao, this.quandoReiniciarQuestionario);
 
+  //Função para mostrar a frase de resultado
+  //Pode ser modificada, mudando parâmetros / texto
   String get fraseResultado {
     if (pontuacao < 8) {
       return 'Parabéns!';
@@ -27,7 +31,7 @@ class Resultado extends StatelessWidget {
         Center(
           child: Text(
             fraseResultado,
-            style: TextStyle(fontSize: 28),
+            style: const TextStyle(fontSize: 28),
           ),
         ),
         ElevatedButton(

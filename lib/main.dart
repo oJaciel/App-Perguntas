@@ -10,25 +10,36 @@ class PerguntaApp extends StatefulWidget {
 }
 
 class _PerguntaAppState extends State<PerguntaApp> {
+  //Variável para controlar qual pergunta está atualmente na tela
   var _perguntaSelecionada = 0;
+
+  //Variável que contém a pontuação total
   var _pontuacaoTotal = 0;
 
+  //Função disparada ao responder uma pergunta
   void _responder(int pontuacao) {
     if (temPerguntaSelecionada) {
       setState(() {
+        //Muda a pergunta
         _perguntaSelecionada++;
+        //Adiciona pontuação da resposta a pontuação total
         _pontuacaoTotal += pontuacao;
       });
     }
   }
 
+  //Quando clicar no botão de reiniciar na tela do resultado
   void _reiniciarQuestionario() {
     setState(() {
+      //Reinicia as perguntas
       _perguntaSelecionada = 0;
+      //Zera a pontuação
       _pontuacaoTotal = 0;
     });
   }
 
+  //Lista de perguntas
+  //Podem ser adicionadas mais perguntas, assim como modificadas as atuais
   final List<Map<String, Object>> _perguntas = [
     {
       'texto': 'Qual é a sua cor favorita?',
@@ -59,6 +70,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
     }
   ];
 
+  //Verifica se ainda tem alguma pergunta para mostrar
   bool get temPerguntaSelecionada {
     return _perguntaSelecionada < _perguntas.length;
   }

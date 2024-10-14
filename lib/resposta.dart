@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Resposta extends StatelessWidget {
+
+  //Componente que formata e mostra as respostas
+
   final String texto;
   final void Function() onSelect;
 
@@ -9,7 +12,7 @@ class Resposta extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
