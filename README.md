@@ -1,16 +1,19 @@
-# projeto_perguntas
+# :brazil: App-Perguntas 
 
-A new Flutter project.
+Aplicação desenvolvida no curso de Flutter da COD3R.
 
-## Getting Started
+Consiste em um aplicativo de quiz / questionário, onde o usuário responde as perguntas, e baseado nas respostas é gerada uma pontuação.
 
-This project is a starting point for a Flutter application.
+Aplicação é totalmente personalizável e escalável, podendo modificar as perguntas / respostas facilmente.
 
-A few resources to get you started if this is your first Flutter project:
+Desenvolvimento encontra-se finalizado.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+# :us: App-Questions 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Application developed in the COD3R Flutter course.
+
+It consists of a quiz/questionnaire application, where the user answers questions, and based on the answers, a score is generated.
+
+Application is fully customizable and scalable, allowing you to modify questions/answers easily.
+
+Development has been completed.
